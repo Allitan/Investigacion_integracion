@@ -3,6 +3,7 @@ import React, { useContext, useState } from 'react'
 import {  PlantillaNode } from '../Modelos/PlantilaNode'
 import { Producto } from '../Modelos/Producto'
 import {contexProducto} from '../Context/ContextoProducto'
+import { error } from 'console'
 
 //children
 //implementacion
@@ -33,8 +34,20 @@ export default function ProviderProducto({children}:PlantillaNode) {
 
   }
 
+  async function eliminarProducto(idProducto:number){
+    const respuesta = await fetch(`http://localhost:5000/producto/${idProducto}`,{
+      method: 'DELETE',
+    });
+    if(respuesta.ok){
+      setCarritoProducto(prev => prev.filter(p => p.idProducto !== idProducto))
+      alert("Producto eliminado correctamente");
+    } else {
+      alert("No se pudo eliminar el producto ");
+    }
+  }
+
   return (
-    <contexProducto.Provider value={{producto,setProducto,carritoProducto,agregarCarrito,guardarProducto}}>
+    <contexProducto.Provider value={{producto,setProducto,carritoProducto,agregarCarrito,guardarProducto,eliminarProducto}}>
         {children}
     </contexProducto.Provider>
   )

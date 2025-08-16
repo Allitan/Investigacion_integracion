@@ -12,7 +12,7 @@ export default function page() {
       const resp = await fetch('http://localhost:5000/producto');
       const data = await resp.json();
 
-      setProducto(data);
+      setProducto(Array.isArray(data) ? data: []);
 
     } catch (error) {
       alert('Ocurrio un error al consumir el servicio producto' + error)

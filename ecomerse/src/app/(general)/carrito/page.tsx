@@ -13,10 +13,10 @@ export default function page() {
             <div className='row'>
 
                 {
-                    carritoProducto.map((item) => (
-                        <div className='col-md-4'>
-                                <CardComponent {...item} key={item.idProducto}></CardComponent>
-                                <BotonEliminar></BotonEliminar>
+                    (carritoProducto || []).map((item) => (
+                        <div className='col-md-4' key={item.idProducto}>
+                                <CardComponent {...item} ></CardComponent>
+                                
                         </div>
                         
                     ))

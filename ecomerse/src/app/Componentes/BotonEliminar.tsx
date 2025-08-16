@@ -1,7 +1,15 @@
 import React from 'react'
+import { Producto } from '../Modelos/Producto'
+import { useContextProducto } from '../Providers/ProviderProducto' 
 
-export default function BotonEliminar() {
+type BotonEliminarProps = {
+  idProducto: number
+}
+
+export default function BotonEliminar({idProducto}: BotonEliminarProps) {
+
+  const { eliminarProducto } = useContextProducto();
   return (
-    <button className='btn btn-danger' type='button'>Eliminar Producto</button>
+    <button className='btn btn-danger' type='button' onClick={()=>eliminarProducto(idProducto)}>Eliminar Producto</button>
   )
 }
