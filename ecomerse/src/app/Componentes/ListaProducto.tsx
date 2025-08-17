@@ -4,6 +4,7 @@ import { useContextProducto } from '../Providers/ProviderProducto'
 import CardComponent from './CardComponent'
 import BotonAgrear from './BotonAgrear'
 import BotonEliminar from './BotonEliminar'
+import BotonActualizar from './BotonActualizar'
 
 export default function ListaProducto() {
 
@@ -17,6 +18,7 @@ export default function ListaProducto() {
                     <CardComponent {...item} key={item.idProducto}></CardComponent>
                     <BotonAgrear {...item}></BotonAgrear> 
                     <BotonEliminar idProducto={item.idProducto!}></BotonEliminar>
+                    <BotonActualizar {...item}></BotonActualizar>
                     </div>
                     
                 ))
